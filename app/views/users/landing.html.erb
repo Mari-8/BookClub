@@ -3,3 +3,14 @@
 <%= link_to("Log in with Google", '/auth/google_oauth2', method: :post) %> 
 <%= link_to("Log in with Facebook", '/auth/facebook', method: :post) %>
 <%= link_to("Log in with Github", '/auth/github', method: :post) %>
+<br><br>
+
+<%= form_tag '/login' do %>
+    <%= label_tag :username %>
+    <%= text_field_tag :username %>
+    <%= label_tag :password %>
+    <%= password_field_tag :password%>
+    <%= submit_tag "Login"%>
+<% end %> 
+<br><br>
+<h2>Dont have an account? <%= link_to "Sign up here", new_user_path %></h2> 
