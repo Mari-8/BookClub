@@ -4,7 +4,11 @@ class UsersController < ApplicationController
     def new 
         @user = User.new 
     end 
-
+    
+    def show 
+        @user = User.find_by_id(params[:id])
+    end 
+    
     def create 
         @user = User.new(user_params)
 
@@ -18,13 +22,10 @@ class UsersController < ApplicationController
           end
     end 
 
-    def welcome 
+    def landing  
 
     end 
 
-    def show 
-        @user = User.find_by_id(params[:id])
-    end 
 
     private 
 
