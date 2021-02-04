@@ -11,7 +11,7 @@ class SessionsController < ApplicationController
             session[:user_id] = user.id 
             redirect_to user_path(user)
         else 
-            flash[:message] = user.errors.full_messages.join(", ")
+            flash[:alert] = user.errors.full_messages.join(", ")
             redirect_to welcome_path 
         end 
     end 
@@ -19,20 +19,20 @@ class SessionsController < ApplicationController
     
     
     def create
-        user = User.find_by(email: params[:login][:email])
+        user = User.find_by(username: params[:username])
         
-        if user && user.authenticate(params[:login][:password]) 
+        if user && user.authenticate(params[:password]) 
             session[:user_id] = user.id
-            redirect_to user_path, notice: 'Successfully logged in!'
+            redirect_to user_path(user), notice: 'Successfully logged in!'
         else 
             flash.now.alert = "Incorrect email or password, try again."
-            render :new 
+            render :'users/landing' 
         end 
       end
 
     def destroy
       session.delete(:user_id)
-      redirect_to landing_path, notice: "Logged out!"
+      redirect_to '/', notice: "Logged out!"
     end
      
       private
