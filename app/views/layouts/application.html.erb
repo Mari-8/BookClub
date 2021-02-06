@@ -7,9 +7,11 @@
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
+
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-
+  <body>
 
   <% if notice %>
       	    <%= notice %>
@@ -17,9 +19,29 @@
 	
 	<% if alert %>
       	    <%= alert %>
-	<% end %>
+  <% end %>
 
-  <body>
+  <% if logged_in? %> 
+    <nav class="navbar is-dark">
+      <div class="container">
+        <div class="navbar-menu">
+          <div class="navbar-start">
+            <div class="navbar-item"> <%= link_to "Home", user_path(current_user) %></div>
+            <div class="navbar-item"> <%= link_to "Books", books_path %></div>
+            <div class="navbar-item"> <%= link_to "Bookshelves" %></div>
+            <div class="navbar-item"> <%= link_to "The club" %></div>
+          </div>
+          <div class="navbar-end">
+            <div class="navbar-item">
+              <div class="buttons"><%= link_to "Log out", logout_path %></div>
+           </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+  <% end %> 
+
     <%= yield %>
   </body>
 </html>
