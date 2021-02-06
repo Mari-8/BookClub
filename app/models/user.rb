@@ -1,5 +1,7 @@
 class User < ApplicationRecord
     has_secure_password
+    has_many :books 
+    has_many :bookshelves 
 
     validates :email, presence: true, uniqueness: true
 
