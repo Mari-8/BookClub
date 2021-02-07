@@ -1,0 +1,16 @@
+<h1><%= @book.title %></h1>
+<h2><%= @book.author_name %></h2> 
+<p><%= @book.description %></p>
+<p><%= image_tag "#{@book.image_url}" %></p>
+<br><br>
+
+<%= button_to "Edit", edit_book_path(@book) %>
+<br> 
+
+
+<%= button_to "Add book to shelf", '/add_to_shelf' %> 
+<br>
+
+
+<p>users chapter reviews, notes, ect. below</p> 
+
