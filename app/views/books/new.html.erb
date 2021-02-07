@@ -1,0 +1,24 @@
+<h1> Search a book by title </h1> 
+
+<%= form_for @book do |f| %>  
+    <%= f.label :title %> 
+    <%= f.text_field :title %><br>
+    <%= f.label :bookshelf %> 
+    <%= f.collection_select :bookshelf_id, Bookshelf.all, :id, :shelf_name %><br>
+    
+    <%= f.submit "Search" %>  
+<% end %> 
+<br><br><br>
+<h1> Or create one manually </h1> 
+
+<%= form_for @book do |f| %>  
+    <%= f.label :title %> 
+    <%= f.text_field :title %><br>
+    <%= f.label :author_name %> 
+    <%= f.text_field :author_name %><br>
+    <%= f.label :description %> 
+    <%= f.text_area :description %><br>
+    <%= f.label :bookshelf %>
+    <%= f.collection_select :bookshelf_id, Bookshelf.all, :id, :shelf_name %><br>
+    <%= f.submit "Add book" %>
+<% end %>  
