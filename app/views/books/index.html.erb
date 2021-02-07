@@ -1,0 +1,11 @@
+<h1><%= current_user.username %>'s Books</h1>
+<br>
+<ul>
+    <% @books.each do |book| %> 
+        <li><%= link_to book.title, book_path(book) %> - <%= book.author_name %></li><br>
+    <% end %>  
+</ul>
+<br><br>
+  <h2>Add a new book</h2>
+  <br>
+  <div class="button is-ghost"><%= link_to "New book", new_book_path %></div>
