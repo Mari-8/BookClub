@@ -1,0 +1,9 @@
+<h1><%= current_user.username %>'s Bookshelves</h1>
+
+<ul>
+    <% @bookshelves.each do |shelf| %> 
+        <li><%= link_to shelf.shelf_name, bookshelf_path(shelf) %></li>
+    <% end %> 
+</ul>
+
+<div class="button is-ghost"><%= link_to "Create new bookshelf", new_bookshelf_path %></div> 
