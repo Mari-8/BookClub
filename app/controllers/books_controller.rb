@@ -39,6 +39,21 @@ class BooksController < ApplicationController
         @books = current_user.books
     end 
 
+    def edit 
+        @book = Book.find(params[:id])
+    end 
+
+    def update 
+        @book = Book.find(params[:id])
+        @book.update(book_params)
+        redirect_to book_path(@book)
+    end 
+
+    def destroy 
+        book = Book.find(params[:id]).destroy
+        redirect_to books_path 
+    end 
+
     def add_to_shelf 
         shelf_id = params[:bookshelf_id] 
         book = Book.find_by_id(params[:book][:book_id])
