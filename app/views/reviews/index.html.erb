@@ -1,0 +1,8 @@
+<h1> Reviews </h1> 
+<br>
+<% @reviews.each do |review| %> 
+    <%= link_to review.title, review_path(review) %> - <%= review.created_at.strftime("%m/%e/%y") %><br><br>
+<% end %> 
+
+<br> 
+<div class="button is-ghost"><%= link_to "Add new review", new_review_path %></div>

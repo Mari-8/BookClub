@@ -1,0 +1,11 @@
+<h1><%= @review.title %></h1>
+<br>
+<h2><%= @review.book.title %></h2> 
+<br> 
+<%= @review.content %> 
+<br><br>
+<%= @review.created_at.strftime("%m/%e/%y") %>
+<br><br> 
+
+<div class="button is-ghost"><%= link_to "Edit", edit_review_path(@review) %></div> 
+<div class="button is-ghost"><%= link_to "Delete", @review, method: :delete, data: { confirm: "Really?" } %></div>
