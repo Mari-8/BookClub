@@ -4,12 +4,10 @@
 <p><%= image_tag "#{@book.image_url}" %></p>
 <br><br>
 
-<%= button_to "Edit", edit_book_path(@book) %>
+<div class="button is-ghost"><%= link_to "Edit", edit_book_path(@book) %></div>
 <br> 
-
-
-<%= button_to "Add book to shelf", '/add_to_shelf' %> 
-<br>
+<div class="button is-ghost"><%= link_to "Delete", @book, method: :delete, data: { confirm: "Really?" } %></div>
+<br><br>
 
 
 <p>users chapter reviews, notes, ect. below</p> 
