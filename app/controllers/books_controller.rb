@@ -1,5 +1,5 @@
 class BooksController < ApplicationController
-    
+    before_action :require_login
 
     def new 
         @book = Book.new(bookshelf_id: params[:bookshelf_id])
@@ -26,13 +26,18 @@ class BooksController < ApplicationController
             flash[:notice] = "You successfully added a book to your collection!"
             redirect_to book_path(book) 
         else 
-            flash[:alert] = "Could not find that title, please try again or create your book manually!"
+            flash[:alert] = "Could not find that title, please try again or create your book manually! #{book.errors.full_messages}"
             redirect_to new_book_path 
         end   
     end 
 
     def show 
-        @book = Book.find_by_id(params[:id])
+        @book = Book.find_by_id(params[:id]) 
+
+        if !users_book(@book) 
+            flash[:alert] = "Cannot view another users book"
+            redirect_to user_path(current_user)  
+        end 
     end 
 
     def index 
@@ -40,18 +45,34 @@ class BooksController < ApplicationController
     end 
 
     def edit 
-        @book = Book.find(params[:id])
+        @book = Book.find(params[:id]) 
+        
+        if !users_book(@book)
+            flash[:alert] = "Cannot edit another users book" 
+            redirect_to user_path(current_user) 
+        end 
     end 
 
     def update 
         @book = Book.find(params[:id])
-        @book.update(book_params)
-        redirect_to book_path(@book)
+
+        if @book.update(book_params)
+            redirect_to book_path(@book)
+        else 
+            flash[:alert] = "#{@book.errors.full_messages}"
+        end 
     end 
 
     def destroy 
-        book = Book.find(params[:id]).destroy
-        redirect_to books_path 
+        book = Book.find(params[:id])
+        
+        if users_book(book) 
+            book.destroy 
+            redirect_to books_path 
+        else 
+            flash[:alert] = "Cannot delete another users book" 
+            redirect_to books_path 
+        end 
     end 
 
     def add_to_shelf 
@@ -63,9 +84,16 @@ class BooksController < ApplicationController
             flash[:notice] = "Successfully added to shelf!" 
             redirect_to bookshelf_path(shelf_id)
         else 
-            flash[:alert] = "There was an issue adding this title" 
+            flash[:alert] = "There was an issue adding this title #{book.errors.full_messages}" 
             redirect_to bookshelf_path(shelf_id)
         end 
+    end 
+
+    def toogle_favorite 
+        book = Book.find(params[:id])
+        book.toggle! :favorite
+       
+        redirect_to book_path(book)
     end 
 
 
@@ -74,4 +102,12 @@ class BooksController < ApplicationController
     def book_params
         params.require(:book).permit(:title, :description, :author_name, :bookshelf_id, :user_id)
     end
+
+    def require_login 
+        return head(:forbidden) unless session.include? :user_id
+    end 
+
+    def users_book(book) 
+        book.user_id == current_user.id 
+    end     
 end
