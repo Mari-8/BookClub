@@ -3,12 +3,31 @@
 <p><%= @book.description %></p>
 <p><%= image_tag "#{@book.image_url}" %></p>
 <br><br>
+<% if @book.favorite == true %> 
+    <p>FAV!</p> 
+<% end %> 
+<br><br>
 
+
+<div class="button is-ghost"><%= link_to "Favorite", "/books/#{@book.id}/toogle_favorite", method: "POST" %></div>
+<br><br>
 <div class="button is-ghost"><%= link_to "Edit", edit_book_path(@book) %></div>
-<br> 
+<br><br>
 <div class="button is-ghost"><%= link_to "Delete", @book, method: :delete, data: { confirm: "Really?" } %></div>
 <br><br>
 
 
 <p>users chapter reviews, notes, ect. below</p> 
+<br><br>
+<div class="button is-ghost"><%= link_to "Add a new review", new_book_review_path(@book) %></div>
+<br><br>
 
+<ul>
+    <% @book.reviews.each do |review| %> 
+      <li>
+        <%= review.title %><br>
+        <%= review.content %> 
+      </li>
+        <br>
+    <% end %> 
+</ul>
