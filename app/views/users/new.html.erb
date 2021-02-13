@@ -1,31 +1,50 @@
-<h1>Sign up page</h1>
 
-<%= form_for @user do |f| %> 
-  <div>
-    <%= f.label :username%>
-    <%= f.text_field :username %>
-  </div>
-  <div>
-    <%= f.label :email %>
-    <%= f.email_field :email %>
-  </div>
+<div class="section"> 
+<div class="container mx-6 py-6 has-text-centered">
+    <div class="columns"> 
+      <div class="column is-one-third"></div>
+        <div class="column is-one-third"> 
+            <div class="card">
+                <div class="card-content">
+                    <div class="card">
+                      <div class="card-content">
 
-  <div>
-    <%= f.label :password %>
-    <%= f.password_field :password %>
-  </div>
-  <div>
-    <%= f.label :password_confirmation %>
-    <%= f.password_field :password_confirmation %>
-  </div>
-  <div>
-    <%= f.label :bio %> 
-    <%= f.text_field :bio %> 
-  </div>
-  <div>
-    <%= f.submit "Sign up!" %>
-  </div>
+                      <h1 class="has-text-weight-bold">Sign up page</h1>
+                        <br><br>
+                        <%= form_for @user do |f| %> 
+                          <div>
+                            <%= f.label :username, class: "has-text-weight-bold"%><br>
+                            <%= f.text_field :username %>
+                          </div><br>
+                          <div>
+                            <%= f.label :email %><br>
+                            <%= f.email_field :email %>
+                          </div><br>
+                          <div>
+                            <%= f.label :password %><br>
+                            <%= f.password_field :password %>
+                          </div><br>
+                          <div>
+                            <%= f.label :password_confirmation %><br>
+                            <%= f.password_field :password_confirmation %>
+                          </div><br>
+                          <div>
+                            <%= f.label :bio %><br>
+                            <%= f.text_field :bio %> 
+                          </div><br>
+                          <div>
+                            <%= f.submit "Sign up!", class: "button" %>
+                          </div>
+                        <br> 
 
 
-
-<% end %> 
+                        <% end %> 
+                      </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="column is-one-third"></div> 
+    </div>
+</div>
+</div>
