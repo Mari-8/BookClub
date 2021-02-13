@@ -3,4 +3,6 @@ class Discussion < ApplicationRecord
     has_many :comments
     has_many :users, through: :comments
     
+    validates :title, presence: true 
+    validates :title, uniqueness: true 
 end
