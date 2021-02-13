@@ -1,0 +1,29 @@
+
+
+<div class="section"> 
+<div class="container mx-6 py-6 has-text-centered">
+    <div class="columns"> 
+      <div class="column is-one-third"></div>
+        <div class="column is-one-third"> 
+            <div class="card">
+                <div class="card-content">
+                    <div class="card">
+                      <div class="card-content">
+                        <h1 class="has-text-weight-bold">Discussions</h1>
+                        <br><br>
+                            <ul>
+                                <% @discussions.each do |d| %> 
+                                    <li><%= link_to "#{d.title} - #{d.user.username}", discussion_path(d), class: "button" %></li><br>
+                                <% end %> 
+                            </ul>
+                        <br><br>
+                        <%= link_to "Add new discussion", new_discussion_path, class: "button" %>
+                      </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="column is-one-third"></div> 
+    </div>
+</div>
+</div>
