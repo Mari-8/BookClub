@@ -1,9 +1,29 @@
-<h1><%= current_user.username %>'s Bookshelves</h1>
 
-<ul>
-    <% @bookshelves.each do |shelf| %> 
-        <li><%= link_to shelf.shelf_name, bookshelf_path(shelf) %></li>
-    <% end %> 
-</ul>
 
-<div class="button is-ghost"><%= link_to "Create new bookshelf", new_bookshelf_path %></div> 
+<div class="section"> 
+    <div class="container mx-6 py-6 has-text-centered">
+        <div class="columns"> 
+            <div class="column is-one-third"></div>
+                <div class="column is-one-third"> 
+                    <div class="card">
+                        <div class="card-content has-text-centered ">
+                            <div class="card">
+                                <div class="card-content">
+                                    <h1><%= current_user.username %>'s Bookshelves</h1>
+                                    <br>
+                                    <ul>
+                                        <% @bookshelves.each do |shelf| %> 
+                                            <li><%= link_to shelf.shelf_name, bookshelf_path(shelf), class: "button"%></li><br>
+                                        <% end %> 
+                                    </ul>
+                                    <br><br>
+                                    <%= link_to "Create new bookshelf", new_bookshelf_path, class: "button" %> 
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <div class="column is-one-third"></div> 
+        </div>
+    </div>
+</div>
