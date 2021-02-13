@@ -1,11 +1,31 @@
-<h1><%= @review.title %></h1>
-<br>
-<h2><%= @review.book.title %></h2> 
-<br> 
-<%= @review.content %> 
-<br><br>
-<%= @review.created_at.strftime("%m/%e/%y") %>
-<br><br> 
 
-<div class="button is-ghost"><%= link_to "Edit", edit_review_path(@review) %></div> 
-<div class="button is-ghost"><%= link_to "Delete", @review, method: :delete, data: { confirm: "Really?" } %></div>
+<div class="section"> 
+<div class="container mx-6 py-6 has-text-centered">
+    <div class="columns"> 
+      <div class="column is-one-third"></div>
+        <div class="column is-one-third"> 
+            <div class="card">
+                <div class="card-content">
+                    <div class="card">
+                      <div class="card-content">
+                        <h1 class="has-text-weight-bold"><%= @review.title %></h1>
+                        <br>
+                        <h2><%= @review.book.title %></h2> 
+                        <br> 
+                        <%= @review.content %> 
+                        <br><br>
+                        <%= @review.created_at.strftime("%m/%e/%y") %>
+                        <br><br>
+
+                        <%= link_to "Edit", edit_review_path(@review), class: "button" %>
+                        <%= link_to "Go to book", book_path(@review.book), class: "button" %> 
+                        <%= link_to "Delete", @review, method: :delete, data: { confirm: "Really?" }, class: "button" %>
+                      </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="column is-one-third"></div> 
+    </div>
+</div>
+</div>
