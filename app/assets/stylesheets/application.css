@@ -13,3 +13,42 @@
  *= require_tree .
  *= require_self
  */
+.has-bg-image {
+    background: black url(https://images.unsplash.com/photo-1536965764833-5971e0abed7c?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80) center / cover;
+}
+
+.color {
+  background: white;
+}
+
+.text {
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.6);
+  
+}
+
+.scroll-box {
+  background: #f4f4f4;
+  border: 2px solid rgba(0, 0, 0, 0.1);
+  height: 100px; 
+  padding: 15px;
+  overflow-y: scroll;
+}
+
+.large-scroll-box {
+  height: 500px; 
+  padding: 15px;
+  overflow-y: scroll;
+}
+
+.main {
+  margin-bottom: 450px;
+}
+
+.user-name-font {
+  font-family: 'Carter One', cursive;
+  padding-top: 50px;
+}
+
+* {
+  font-family: 'Mukta Vaani', sans-serif;
+ }
