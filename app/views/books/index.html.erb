@@ -12,7 +12,7 @@
                         <ul>
                             <% @books.each do |book| %> 
                               <br>
-                              <li><%= link_to book.title, book_path(book) %></li>
+                              <li><%= link_to book.title, book_path(book) %></li><br>
                               <li><%= book.author_name %></li><br>
                               _______________________
                               <br>
