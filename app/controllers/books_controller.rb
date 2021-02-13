@@ -10,7 +10,7 @@ class BooksController < ApplicationController
     end 
 
     def create 
-        
+       
         if params[:commit] == "Search" 
             book = Book.new.create_from_google_books(params[:book][:title])
             book.user_id = current_user.id
@@ -42,6 +42,7 @@ class BooksController < ApplicationController
 
     def index 
         @books = current_user.books
+        @user = current_user
     end 
 
     def edit 
