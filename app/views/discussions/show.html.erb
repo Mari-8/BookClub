@@ -1,0 +1,54 @@
+
+
+
+<div class="section"> 
+    <div class="container mx-6 py-6 has-text-centered">
+        <div class="columns"> 
+            <div class="column is-one-third"></div>
+                <div class="column is-one-third"> 
+                    <div class="card ">
+                        <div class="card-content">
+                            <div class="card">
+                                <div class="card-content">
+                                    <h1 class="has-text-weight-bold"><%= @discussion.user.username %></h1>
+                                    <br><br> 
+                                    
+                                    <h2 class="has-text-weight-bold"><%= @discussion.title %></h2>
+                                    <br><br> 
+                                    <%= @discussion.content %> 
+                                    <br>
+                                    <% if @discussion.user == current_user %> 
+                                        <div class="button is-ghost"><%= link_to "Edit", edit_discussion_path(@discussion) %></div>
+                                    <% end %> 
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            <div class="column is-one-third"></div>
+        </div>
+    </div>
+</div>
+
+<div class="section"> 
+    <div class="container"> 
+        <h1 class="has-text-weight-bold has-text-white is-size-2 has-text-centered text">Comments</h1>
+        <br>
+        <ul>
+            <% @discussion.comments.each do |comment| %> 
+                <div class="box">
+                    <li class="has-text-weight-bold"><%= comment.user.username %></li><br>
+                    <li><%= comment.content %></li>
+                    <% if comment.user == current_user %> 
+                        <br>
+                        <%= link_to "Edit comment", edit_comment_path(comment), class: "button" %> 
+                    <% end %> 
+                </div>
+            <% end %> 
+        </ul>
+        <br>
+        <%= link_to "Comment", new_discussion_comment_path(@discussion), class: "button" %>
+    </div>
+</div>
