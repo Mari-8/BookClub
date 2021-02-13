@@ -1,9 +1,9 @@
 <%= form_for(@review) do |f| %> 
-    <%= f.label :title %> 
-    <%= f.text_field :title %><br>
-    <%= f.label :content %> 
-    <%= f.text_area :content %><br>
-    <%= f.label :book_id %> 
-    <%= f.collection_select :book_id, Book.all, :id, :title %><br>
-    <%= f.submit %> 
+    <%= f.label :title, class: "has-text-weight-bold"%><br>
+    <%= f.text_field :title %><br><br>
+    <%= f.label :content, class: "has-text-weight-bold" %><br>
+    <%= f.text_area :content %><br><br>
+    <%= f.label :book_id, class: "has-text-weight-bold" %> 
+    <%= f.collection_select :book_id, current_user.books, :id, :title %><br><br>
+    <%= f.submit "Submit", class: "button" %> 
 <% end %> 
