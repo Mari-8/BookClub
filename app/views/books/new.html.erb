@@ -5,21 +5,25 @@
       <div class="column is-one-third"></div>
          <div class="column is-one-third"> 
             <div class="card">
-                <div class="card-content has-text-centered ">
-                  <h1 class="has-text-weight-bold"> Search a book by title </h1> 
-                    <br>
-                    <%= form_for @book do |f| %>  
-                        <%= f.label :title %><br>
-                        <%= f.text_field :title %><br><br>
-                        <%= f.label :bookshelf, "For shelf" %><br>
-                        <%= f.collection_select :bookshelf_id, Bookshelf.all, :id, :shelf_name %><br>
-                        <br>
-                        <%= f.submit "Search" %>  
-                    <% end %> 
-                    <br><br>
-                    <h1 class="has-text-weight-bold"> Or create one manually </h1> 
-                    <br>
-                    <%= render 'book' %>  
+                <div class="card-content ">
+                  <div class="card">
+                    <div class="card-content">
+                        <h1 class="has-text-weight-bold"> Search a book by title </h1> 
+                            <br>
+                            <%= form_for @book do |f| %>  
+                                <%= f.label :title, class: "has-text-weight-bold" %><br>
+                                <%= f.text_field :title %><br><br>
+                                <%= f.label :bookshelf, "For shelf", class: "has-text-weight-bold" %><br>
+                                <%= f.collection_select :bookshelf_id, current_user.bookshelves, :id, :shelf_name %><br>
+                                <br>
+                                <%= f.submit "Search" %>  
+                            <% end %> 
+                            <br><br>
+                            <h1 class="has-text-weight-bold"> Or create one manually </h1> 
+                            <br>
+                            <%= render 'book' %>
+                        </div>
+                  </div>  
                 </div>
             </div>
          </div>
