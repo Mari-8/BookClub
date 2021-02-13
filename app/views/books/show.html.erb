@@ -9,7 +9,7 @@
                <div class="card-content">
                   <% if @book.favorite == true %> 
                   <span class="icon has-text-warning">
-                    <i class="fas fa-star is-warning is-medium"></i> 
+                    <i class="fas fa-star is-medium"></i> 
                   </span>
                   <% else %> 
                     <i class="far fa-star is-warning is-medium"></i>
@@ -32,7 +32,7 @@
                     <div class="card">
                         <div class="card-content has-text-centered ">
                                 <br>
-                                <p><%= image_tag "#{@book.image_url}" %></p><br><br>
+                                  <p><%= image_tag "#{@book.image_url}" %></p><br><br>
                                   <h1 class="has-text-weight-bold"><%= @book.title %></h1><br>
                                   <h2 class="has-text-weight-bold"><%= @book.author_name %></h2><br>
                                   <p><%= @book.description %></p>
@@ -51,7 +51,7 @@
                       <ul>
                       <% @book.reviews.each do |review| %> 
                         <li>
-                          <h2 class="has-text-weight-bold"><%= link_to review.title, review_path(review), class: "button" %></h2><br>
+                          <h2><%= link_to review.title, review_path(review), class: "button" %></h2><br>
                         </li>
                         <br>
                       <% end %> 
