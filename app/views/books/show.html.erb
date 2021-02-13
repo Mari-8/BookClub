@@ -1,33 +1,77 @@
-<h1><%= @book.title %></h1>
-<h2><%= @book.author_name %></h2> 
-<p><%= @book.description %></p>
-<p><%= image_tag "#{@book.image_url}" %></p>
-<br><br>
-<% if @book.favorite == true %> 
-    <p>FAV!</p> 
-<% end %> 
-<br><br>
+
+<div class="section"> 
+    <div class="container mx-6 py-6 has-text-centered">
+        <div class="columns"> 
+          <div class="column is-one-third">
+            <div class="card">
+             <div class="card-content">
+              <div class="card has-text-centered "> 
+               <div class="card-content">
+                  <% if @book.favorite == true %> 
+                  <span class="icon has-text-warning">
+                    <i class="fas fa-star is-warning is-medium"></i> 
+                  </span>
+                  <% else %> 
+                    <i class="far fa-star is-warning is-medium"></i>
+                  <% end %>
+                </div>
+                <br>
+                  <%= link_to "Favorite", "/books/#{@book.id}/toogle_favorite", method: "POST", class: "button"  %>
+                <br><br>
+                  <%= link_to "Edit", edit_book_path(@book), class: "button" %>
+                <br><br>
+                  <%= link_to "Delete", @book, method: :delete, data: { confirm: "Really?" }, class: "button" %>
+                <br><br><br>
+                  <%= link_to "Add a new review", new_book_review_path(@book), class: "button"  %>
+                <br><br>
+              </div>
+             </div>
+            </div>
+          </div>
+                <div class="column is-one-third"> 
+                    <div class="card">
+                        <div class="card-content has-text-centered ">
+                                <br>
+                                <p><%= image_tag "#{@book.image_url}" %></p><br><br>
+                                  <h1 class="has-text-weight-bold"><%= @book.title %></h1><br>
+                                  <h2 class="has-text-weight-bold"><%= @book.author_name %></h2><br>
+                                  <p><%= @book.description %></p>
+                                  <br>
+                                <br> 
+                        </div>
+                    </div>
+                </div>
+            <div class="column is-one-third">
+              <div class="card">
+                <div class="card-content">
+                  <div class="card has-text-centered "> 
+                    <div class="card-content">
+                      <h1 class="has-text-weight-bold"><%= current_user.username %>s Notes / Reviews</h1>
+                      <br>
+                      <ul>
+                      <% @book.reviews.each do |review| %> 
+                        <li>
+                          <h2 class="has-text-weight-bold"><%= link_to review.title, review_path(review), class: "button" %></h2><br>
+                        </li>
+                        <br>
+                      <% end %> 
+                  </ul>
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div> 
+        </div>
+    </div>
+</div>
 
 
-<div class="button is-ghost"><%= link_to "Favorite", "/books/#{@book.id}/toogle_favorite", method: "POST" %></div>
-<br><br>
-<div class="button is-ghost"><%= link_to "Edit", edit_book_path(@book) %></div>
-<br><br>
-<div class="button is-ghost"><%= link_to "Delete", @book, method: :delete, data: { confirm: "Really?" } %></div>
-<br><br>
 
 
-<p>users chapter reviews, notes, ect. below</p> 
-<br><br>
-<div class="button is-ghost"><%= link_to "Add a new review", new_book_review_path(@book) %></div>
-<br><br>
 
-<ul>
-    <% @book.reviews.each do |review| %> 
-      <li>
-        <%= review.title %><br>
-        <%= review.content %> 
-      </li>
-        <br>
-    <% end %> 
-</ul>
+
+
+
+
+
