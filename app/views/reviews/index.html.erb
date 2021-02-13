@@ -1,8 +1,27 @@
-<h1> Reviews </h1> 
-<br>
-<% @reviews.each do |review| %> 
-    <%= link_to review.title, review_path(review) %> - <%= review.created_at.strftime("%m/%e/%y") %><br><br>
-<% end %> 
 
-<br> 
-<div class="button is-ghost"><%= link_to "Add new review", new_review_path %></div>
+<div class="section"> 
+<div class="container mx-6 py-6 has-text-centered">
+    <div class="columns"> 
+      <div class="column is-one-third"></div>
+        <div class="column is-one-third"> 
+            <div class="card">
+                <div class="card-content">
+                    <div class="card">
+                      <div class="card-content">
+                        <h1 class="has-text-weight-bold"> Reviews </h1> 
+                        <br><br>
+                        <% @reviews.each do |review| %> 
+                           <%= link_to review.title, review_path(review), class: "button" %> - <%= review.created_at.strftime("%m/%e/%y") %><br><br>
+                        <% end %>
+                        <br><br>
+                        <%= link_to "Add new review", new_review_path, class: "button" %>
+                    
+                      </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="column is-one-third"></div> 
+    </div>
+</div>
+</div>
