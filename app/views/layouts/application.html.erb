@@ -6,10 +6,14 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
+    <%= stylesheet_link_tag "application.css" %>
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
 
+    <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Font+Name"> 
+
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <script src="https://kit.fontawesome.com/be3035c5ff.js" crossorigin="anonymous"></script>
   </head>
   <body>
 
@@ -28,8 +32,9 @@
           <div class="navbar-start">
             <div class="navbar-item"> <%= link_to "Home", user_path(current_user) %></div>
             <div class="navbar-item"> <%= link_to "Books", books_path %></div>
-            <div class="navbar-item"> <%= link_to "Bookshelves" %></div>
-            <div class="navbar-item"> <%= link_to "The club" %></div>
+            <div class="navbar-item"> <%= link_to "Reviews", reviews_path %></div>
+            <div class="navbar-item"> <%= link_to "Bookshelves", bookshelves_path %></div>
+            <div class="navbar-item"> <%= link_to "The club", discussions_path %></div>
           </div>
           <div class="navbar-end">
             <div class="navbar-item">
@@ -42,6 +47,14 @@
 
   <% end %> 
 
+  
+  <div class="hero is-fullheight has-bg-image">        
     <%= yield %>
+  </div>
+    
+  
+<div>
+
   </body>
 </html>
+
