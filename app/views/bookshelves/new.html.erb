@@ -1,0 +1,30 @@
+
+ <div class="section"> 
+ <div class="container mx-6 py-6 has-text-centered">
+     <div class="columns"> 
+       <div class="column is-one-third"></div>
+         <div class="column is-one-third"> 
+             <div class="card">
+                <div class="card-content">
+                    <div class="card has-text-centered ">
+                        <div class="card-content"> 
+                            <%= form_for(@bookshelf) do |f| %> 
+                                <%= f.label :shelf_name %><br>
+                                <%= f.text_field :shelf_name %> 
+                                <br><br>
+                                <%= f.submit "Create", class: "button" %> 
+                            <% end %>
+                        </div>
+                    </div>
+                </div>
+             </div>
+         </div>
+         <div class="column is-one-third"></div> 
+     </div>
+ </div>
+</div>
+
+
+
+
+
