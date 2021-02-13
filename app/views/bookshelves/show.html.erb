@@ -1,23 +1,45 @@
-<h2><%= @bookshelf.shelf_name %></h2>
-<br><br>
-<% @bookshelf.books.each do |book| %> 
-  <div>
-    <%= image_tag "#{book.image_url}" %>
-    <%= book.title %> - <%= book.author_name %><br>
-    <div class="button is-ghost"><%= link_to "View", book_path(book) %></div>
-  </div>
-<% end %> 
+<div class="section"> 
+  <div class="container mx-6 py-6 has-text-centered">
+      <div class="columns"> 
+        <div class="column is-one-third"></div>
+          <div class="column is-one-third"> 
+              <div class="card">
+                  <div class="card-content">
+                    <div class="card">
+                      <div class="card-content"> 
+                        <h2 class="has-text-weight-bold"><%= @bookshelf.shelf_name %></h2>
+                        <br><br>
+                          <% @bookshelf.books.each do |book| %> 
+                            <div>
+                              <%= book.title %> - <%= book.author_name %><br>
+                              
+                            </div>
+                          <% end %> 
+                          <br><br>
+                          <br><br>
+                          <h3 class="has-text-weight-bold"> Add a new book to this shelf </h3> 
+                              <%= link_to "Add new book", new_bookshelf_book_path(@bookshelf), class: "button"%>
+                          <br><br>
 
-<br><br>
-<h3> Add a new book to this shelf </h3> 
-    <div class="button is-ghost"><%= link_to "Add book", new_bookshelf_book_path(@bookshelf)%></div>
-<br>
-<h3>Move an existing book to this shelf</h3>
-    <%= form_tag('/add_to_shelf') do %>
-        <%= hidden_field_tag :bookshelf_id, @bookshelf.id %>
-        <%= collection_select(:book, :book_id, current_user.books, :id, :title) %>
-        <br>
-        <%= submit_tag "Add Book" %> 
-    <% end %> 
+                          <h3 class="has-text-weight-bold">Move an existing book to this shelf</h3>
+                              <%= form_tag('/add_to_shelf') do %>
+                                  <%= hidden_field_tag :bookshelf_id, @bookshelf.id %>
+                                  <%= collection_select(:book, :book_id, current_user.books, :id, :title) %>
+                                  <br><br>
+                                  <%= submit_tag "Add Book", class: "button" %> 
+                              <% end %> 
+                            <br>
+                              <%= link_to "Edit shelf", edit_bookshelf_path(@bookshelf), class: "button" %>
+                        
+                      </div>
+                    </div>
+                  </div>
+              </div>
+          </div>
+          <div class="column is-one-third"></div> 
+      </div>
+  </div>
+</div>
+
 
  
