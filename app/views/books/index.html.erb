@@ -6,22 +6,28 @@
         <div class="column is-one-third"></div>
           <div class="column is-one-third"> 
               <div class="card">
-                  <div class="card-content has-text-centered ">
-                      <h2 class="has-text-weight-bold has-text-centered"><%= current_user.username %>'s Books</h2> 
-                      <br>
-                        <ul>
-                            <% @books.each do |book| %> 
-                              <br>
-                              <li><%= link_to book.title, book_path(book) %></li><br>
-                              <li><%= book.author_name %></li><br>
-                              _______________________
-                              <br>
-                            <% end %>  
-                        </ul>
-                      <br>
-                      <h2class="has-text-weight-bold">Add a new book</h2>
-                      <br><br>
-                      <div class="button is-ghost"><%= link_to "New book", new_book_path %></div>  
+                  <div class="card-content ">
+                    <div class="card"> 
+                        <div class="card-content">
+                            <h2 class="has-text-weight-bold has-text-centered"> Books</h2> 
+                            <br>
+                                <ul class="large-scroll-box">
+                                    <% @user.books.each do |book| %> 
+                                    <br>
+                                    <li><%= link_to book.title, book_path(book) %></li><br>
+                                    <li><%= book.author_name %></li><br>
+                                    _______________________
+                                    <br>
+                                    <% end %>  
+                                </ul>
+                            <br>
+                            <h2class="has-text-weight-bold">Add a new book</h2>
+                            <br><br>
+                            <%= link_to "New book", new_book_path, class: "button" %> 
+                            <br><br> 
+                            <%= link_to "Favorite books", "/users/#{current_user.id}/favorite_books", class: "button" %>
+                        </div> 
+                    </div>
                   </div>
               </div>
           </div>
