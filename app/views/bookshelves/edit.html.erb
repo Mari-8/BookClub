@@ -1,0 +1,28 @@
+
+<div class="section"> 
+<div class="container mx-6 py-6 has-text-centered">
+    <div class="columns"> 
+      <div class="column is-one-third"></div>
+        <div class="column is-one-third"> 
+            <div class="card">
+                <div class="card-content has-text-centered ">
+                  <div class="card">
+                    <div class="card-content"> 
+                        <br>
+                            <%= form_for(@bookshelf) do |f| %>
+                                <%= f.label :shelf_name, class: "has-text-weight-bold"%><br>
+                                <%= f.text_field :shelf_name %><br><br>
+                                <%= f.submit "Update", class: "button" %> 
+                            <% end %> 
+                        <br><br>
+                        <%= link_to "Delete Shelf", @bookshelf, method: :delete, data: { confirm: "Really?" }, class: "button is-small" %>
+                        <br>
+                    </div>
+                  </div>
+                </div>
+            </div>
+        </div>
+        <div class="column is-one-third"></div> 
+    </div>
+</div>
+</div>
