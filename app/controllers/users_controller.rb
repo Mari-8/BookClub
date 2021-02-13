@@ -30,9 +30,14 @@ class UsersController < ApplicationController
 
     def update 
         @user = User.find(params[:id])
-        @user.update(user_params)
 
-        redirect_to user_path(@user)
+        if @user.update(user_params)
+            flash[:notice] = "Successfully updated profile" 
+            redirect_to user_path(@user)
+        else 
+            flash[:alert] = "There was a problem updating profile: #{@user.errors.full_messages.to_s}"
+            redirect_to user_path(@user)
+        end 
     end 
 
     def destroy 
@@ -43,7 +48,7 @@ class UsersController < ApplicationController
     end 
 
     def favorite_books 
-        @books = Book.favorite_books(current_user)
+        @books = User.favorite_books(current_user)
         
     end 
 
