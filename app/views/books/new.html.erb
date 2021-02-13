@@ -10,7 +10,7 @@
                     <br>
                     <%= form_for @book do |f| %>  
                         <%= f.label :title %><br>
-                        <%= f.text_field :title %><br>
+                        <%= f.text_field :title %><br><br>
                         <%= f.label :bookshelf, "For shelf" %><br>
                         <%= f.collection_select :bookshelf_id, Bookshelf.all, :id, :shelf_name %><br>
                         <br>
@@ -27,3 +27,6 @@
         </div>
        </div>
     </div>
+        
+    
+   
