@@ -18,6 +18,7 @@
                                     <%= @discussion.content %> 
                                     <br>
                                     <% if @discussion.user == current_user %> 
+                                        <br>
                                         <div class="button is-ghost"><%= link_to "Edit", edit_discussion_path(@discussion) %></div>
                                     <% end %> 
                                     
@@ -35,19 +36,21 @@
 <div class="section"> 
     <div class="container"> 
         <h1 class="has-text-weight-bold has-text-white is-size-2 has-text-centered text">Comments</h1>
+        <div class="container has-background-light large-scroll-box"> 
         <br>
-        <ul>
-            <% @discussion.comments.each do |comment| %> 
-                <div class="box">
-                    <li class="has-text-weight-bold"><%= comment.user.username %></li><br>
-                    <li><%= comment.content %></li>
-                    <% if comment.user == current_user %> 
-                        <br>
-                        <%= link_to "Edit comment", edit_comment_path(comment), class: "button" %> 
-                    <% end %> 
-                </div>
-            <% end %> 
-        </ul>
+            <ul>
+                <% @discussion.comments.each do |comment| %> 
+                    <div class="box">
+                        <li class="has-text-weight-bold"><%= comment.user.username %></li><br>
+                        <li><%= comment.content %></li>
+                        <% if comment.user == current_user %> 
+                            <br>
+                            <%= link_to "Edit comment", edit_comment_path(comment), class: "button" %> 
+                        <% end %> 
+                    </div>
+                <% end %> 
+            </ul>
+        </div>
         <br>
         <%= link_to "Comment", new_discussion_comment_path(@discussion), class: "button" %>
     </div>
