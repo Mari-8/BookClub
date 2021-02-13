@@ -11,11 +11,13 @@
                       <div class="card-content">
                         <h1 class="has-text-weight-bold">Discussions</h1>
                         <br><br>
+                          <% if @discussions %> 
                             <ul>
                                 <% @discussions.each do |d| %> 
                                     <li><%= link_to "#{d.title} - #{d.user.username}", discussion_path(d), class: "button" %></li><br>
                                 <% end %> 
                             </ul>
+                          <% end %> 
                         <br><br>
                         <%= link_to "Add new discussion", new_discussion_path, class: "button" %>
                       </div>
