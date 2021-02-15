@@ -11,13 +11,16 @@
                         <br><br>
                           <% @bookshelf.books.each do |book| %> 
                             <div>
-                              <%= book.title %> - <%= book.author_name %><br>
-                              
+                              <br>
+                              <h1 class="has-text-weight-bold"><%= link_to book.title, book_path(book), class: "button" %></h1><br>
+                              <%= book.author_name %><br>
+                              __________
                             </div>
                           <% end %> 
                           <br><br>
+
                           <br><br>
-                          <h3 class="has-text-weight-bold"> Add a new book to this shelf </h3> 
+                          <h3 class="has-text-weight-bold"> Add a new book to this shelf </h3><br>
                               <%= link_to "Add new book", new_bookshelf_book_path(@bookshelf), class: "button"%>
                           <br><br>
 
@@ -28,8 +31,10 @@
                                   <br><br>
                                   <%= submit_tag "Add Book", class: "button" %> 
                               <% end %> 
-                            <br>
+                            
                               <%= link_to "Edit shelf", edit_bookshelf_path(@bookshelf), class: "button" %>
+                             
+                            
                         
                       </div>
                     </div>
